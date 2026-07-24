@@ -1,0 +1,29 @@
+<app-auth-page-layout>
+  <div class="flex flex-col justify-center flex-1 w-full max-w-md pt-10 mx-auto text-center">
+    <div class="flex items-center justify-center mx-auto mb-7 size-14 rounded-full bg-brand-50 dark:bg-brand-500/15">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" class="text-brand-500">
+        <path
+          d="M3.5 6.5A2 2 0 0 1 5.5 4.5h13a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2v-11Z"
+          stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"
+        />
+        <path d="M4 6.5 12 13l8-6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </div>
+
+    <h1 class="mb-2 font-semibold text-gray-800 text-title-sm dark:text-white/90 sm:text-title-md">
+      Check your email
+    </h1>
+    <p class="text-sm text-gray-500 dark:text-gray-400">
+      We sent you a confirmation link. Click the link in that email to activate your account, then sign in below.
+    </p>
+
+    <div class="mt-6">
+      <a
+        routerLink="/signin"
+        class="text-sm font-medium text-brand-500 hover:text-brand-600 dark:text-brand-400"
+      >
+        Back to sign in
+      </a>
+    </div>
+  </div>
+</app-auth-page-layout>
