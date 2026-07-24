@@ -5,17 +5,20 @@ import { Router, RouterModule } from '@angular/router';
 import { DropdownItemTwoComponent } from '../../ui/dropdown/dropdown-item/dropdown-item.component-two';
 import type { Session } from '@supabase/supabase-js';
 import { AuthService } from '../../../services/auth.service';
+import { BadgeComponent } from '../../ui/badge/badge.component';
+import type { AppRole } from '../../../models/role.model';
 
 @Component({
   selector: 'app-user-dropdown',
   templateUrl: './user-dropdown.component.html',
-  imports:[CommonModule,RouterModule,DropdownComponent,DropdownItemTwoComponent]
+  imports:[CommonModule,RouterModule,DropdownComponent,DropdownItemTwoComponent,BadgeComponent]
 })
 export class UserDropdownComponent {
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
 
   readonly session$ = this.authService.session$;
+  readonly role$ = this.authService.role$;
 
   isOpen = false;
 
@@ -38,6 +41,10 @@ export class UserDropdownComponent {
     const fullName = [firstName, lastName].filter(Boolean).join(' ');
 
     return fullName || user.email || 'Account';
+  }
+
+  roleBadgeColor(role: AppRole): 'primary' | 'light' {
+    return role === 'ADMIN' ? 'primary' : 'light';
   }
 
   async logout() {

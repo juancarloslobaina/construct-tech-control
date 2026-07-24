@@ -21,3 +21,14 @@ export const publicOnlyGuard: CanActivateFn = async () => {
 
   return auth.isAuthenticated ? router.parseUrl('/') : true;
 };
+
+/** Protects admin-only routes: no session -> /signin, signed in but not an ADMIN -> /. */
+export const adminGuard: CanActivateFn = async () => {
+  const auth = inject(AuthService);
+  const router = inject(Router);
+
+  await auth.ready;
+
+  if (!auth.isAuthenticated) return router.parseUrl('/signin');
+  return auth.isAdmin ? true : router.parseUrl('/');
+};
